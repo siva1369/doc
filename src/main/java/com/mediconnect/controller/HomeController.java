@@ -1,13 +1,18 @@
-package com.mediconnect.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-
 @Controller
 public class HomeController {
 
     @GetMapping("/")
-    public String home() {
-        return "index";  // this will render index.html from templates
+    public String index() {
+        return "index"; // maps to index.html
+    }
+
+    @GetMapping("/doctors")
+    public String viewDoctors(Model model) {
+        List<Doctor> doctors = List.of(
+            new Doctor("Dr. Siva", "Cardiologist", "Hyderabad"),
+            new Doctor("Dr. Meera", "Dermatologist", "Chennai")
+        );
+        model.addAttribute("doctors", doctors);
+        return "docker_list"; // maps to docker_list.html
     }
 }
