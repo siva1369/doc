@@ -2,29 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Doctors List</title>
+    <title>Our Doctors | HealthCare</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f6ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .doctor-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
+
+    <nav class="navbar navbar-light bg-light px-4">
+        <a class="navbar-brand" href="/">🏥 HealthCare</a>
+    </nav>
+
     <div class="container mt-5">
-        <h2>Available Doctors</h2>
-        <table class="table table-bordered mt-3">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Specialization</th>
-                    <th>Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="doc : ${doctors}">
-                    <td th:text="${doc.name}">Dr. Name</td>
-                    <td th:text="${doc.specialization}">Specialization</td>
-                    <td th:text="${doc.location}">Location</td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+        <h2 class="text-center mb-4">Available Doctors</h2>
+        <div class="row g-4">
+            <div class="col-md-4" th:each="doctor : ${doctors}">
+                <div class="card doctor-card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${doctor.name}">Dr. Name</h5>
+                        <p class="card-text"><strong>Specialization:</strong> <span th:text="${doctor.specialization}">Specialist</span></p>
+                        <p class="card-text"><strong>Location:</strong> <span th:text="${doctor.location}">City</span></p>
+                        <a href="#" class="btn btn-primary w-100">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <footer class="text-center py-4 text-muted mt-5">
+        &copy; 2025 HealthCare App. All rights reserved.
+    </footer>
+
 </body>
 </html>
