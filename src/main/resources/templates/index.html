@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Welcome to MediConnect</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Doctor Booking Home</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div class="container text-center mt-5">
-    <h1>Welcome to MediConnect</h1>
-    <p>Find and book appointments with top doctors.</p>
-    <a href="/doctors" class="btn btn-primary">View Doctors</a>
-</div>
+    <h1>Welcome to HealthCare Booking</h1>
+    <a href="/doctors">View Doctors</a> |
+    <a href="/doctor/register">Register as Doctor</a>
 </body>
 </html>
