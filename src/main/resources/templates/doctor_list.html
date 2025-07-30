@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Doctors</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Doctor List</title>
 </head>
 <body>
-<div class="container mt-5">
     <h2>Available Doctors</h2>
-    <div class="row">
-        <div class="col-md-4" th:each="doctor : ${doctors}">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 th:text="${doctor.name}"></h5>
-                    <p th:text="'Specialization: ' + ${doctor.specialization}"></p>
-                    <p th:text="'Hospital: ' + ${doctor.hospital}"></p>
-                    <p th:text="'Experience: ' + ${doctor.experience} + ' yrs'"></p>
-                    <p th:text="'Surgeries: ' + ${doctor.surgeries}"></p>
-                    <p th:text="'Success Rate: ' + ${doctor.successRate} + '%'"></p>
-                    <a th:href="@{'/book/' + ${doctor.id}}" class="btn btn-primary">Book Appointment</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Hospital</th>
+            <th>Specialization</th>
+            <th>Experience</th>
+            <th>Surgeries</th>
+            <th>Success Rate</th>
+        </tr>
+        <tr th:each="doc : ${doctors}">
+            <td th:text="${doc.name}">Name</td>
+            <td th:text="${doc.hospital}">Hospital</td>
+            <td th:text="${doc.specialization}">Spec</td>
+            <td th:text="${doc.experience}">Exp</td>
+            <td th:text="${doc.surgeries}">Surg</td>
+            <td th:text="${doc.successRate}">Rate</td>
+        </tr>
+    </table>
+    <a href="/">Back to Home</a>
 </body>
 </html>
